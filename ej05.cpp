@@ -1,3 +1,6 @@
+// Un comercio vende tres marcas de alfajores distintas A, B y C. 
+// Hacer un programa para ingresar por teclado la cantidad de alfajores vendidos de cada una de las tres marcas 
+// y luego se informe el porcentaje de ventas para cada una de ellas.
 
 #include <iostream>
 using namespace std;

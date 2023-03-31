@@ -1,3 +1,6 @@
+// Hacer un programa para ingresar por teclado la cantidad de asientos disponibles en un avión y 
+// la cantidad de pasajes ocupados y luego calcular e informar el porcentaje de ocupación y
+//  el porcentaje de no ocupación del mismo.
 
 #include <iostream>
 using namespace std;

@@ -1,3 +1,5 @@
+// Hacer un programa para ingresar por teclado el importe de una venta 
+// y el porcentaje de descuento aplicada a la misma y luego informar por pantalla el importa a pagar.
 
 #include <iostream>
 using namespace std;

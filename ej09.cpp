@@ -1,3 +1,5 @@
+// Hacer un programa para ingresar por teclado una cantidad de minutos 
+// y mostrar por pantalla a cuantas horas y minutos equivalen.
 
 #include <iostream>
 using namespace std;

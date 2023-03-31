@@ -1,3 +1,6 @@
+// Hacer un programa para ingresar por teclado el importe de una venta sin el descuento
+//  y el importe de esa misma venta con el descuento aplicado 
+// y luego informar por pantalla el porcentaje de descuento aplicada a la misma.
 
 #include <iostream>
 using namespace std;
