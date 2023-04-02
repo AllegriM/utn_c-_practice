@@ -8,16 +8,24 @@
 using namespace std;
 
 int main(){
-    int dia, mes, anio;
+    int diaNacimiento, mesNacimiento, anioNacimiento, edad;
+    int diaActual, mesActual, anioActual;
 
-    cout << "Ingrese el dia " << endl;
-    cin >> dia;
+    cout << "Ingrese el dia/mes/anio Nacimiento (dd/mm/aaaa): " << endl;
+    cin >> diaNacimiento >> mesNacimiento >> anioNacimiento;
 
-    cout << "Ingrese el mes " << endl;
-    cin >> mes;
+    cout << "Ingrese el dia/mes/anio Actual (dd/mm/aaaa): " << endl;
+    cin >> diaActual >> mesActual >> anioActual;
 
-    cout << "Ingrese el anio " << endl;
-    cin >> anio;
+    edad = anioActual - anioNacimiento;
+
+    // 18/07/1999 Mes nacimiento.
+    // 01/04/2023 Mes actual. 
+    if (mesNacimiento > mesActual || (mesNacimiento == mesActual && diaNacimiento > diaActual)){
+        edad--;
+    }
+
+    cout << "La edad es: " << edad << endl;
 
     return 0;
 }
