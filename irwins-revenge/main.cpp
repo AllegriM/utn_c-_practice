@@ -72,12 +72,154 @@ void lanzarCincoDados(int dados[]) {
   }
 }
 
+void lanzarCincoDados6Caras(int dados[]) {
+  const int CANT_DADOS = 5;
+
+  srand(time(NULL));
+
+  for (int i = 0; i < CANT_DADOS; i++) {
+    // Hago la tirada del dado y obtengo un numero
+    dados[i] = 1 + rand() % (7 - 1);
+  }
+}
+
+void faseFinal(string** estatuillasJ1,
+               string** estatuillasJ2,
+               int restarPuntosVictoriaJ1,
+               int restarPuntosVictoriaJ2,
+               string jugador1,
+               string jugador2,
+               bool turnoJugador1) {
+  int opcion, numeroCambiasso;
+  bool escaleraEncontrada = false, beneficioCangrejo = true,
+       bendicionHormigaJ1 = false, bendicionHormigaJ2 = false;
+  int dados[5] = {};
+
+  for (int i = 0; i <= 4; i++) {
+    if (estatuillasJ1[i] == "Hormiga") {
+      cout << "El jugador " << jugador1 << " tiene la estatuilla de Hormiga"
+           << endl;
+      cout << "Podes elegir un numero y luego en cada tirada cambiar un numero "
+              "aleatorio por ese mismo."
+           << endl;
+      cout << "Ingrese el numero x el que va a poder cambiar en la fase "
+              "final: ";
+      cin << numeroCambiasso;
+      bendicionHormigaJ1 = true;
+    } else if (estatuillasJ2[i] == "Hormiga") {
+      cout << "El jugador " << jugador2 << " tiene la estatuilla de Hormiga"
+           << endl;
+      cout << "Podes elegir un numero y luego en cada tirada cambiar un numero "
+              "aleatorio por ese mismo."
+           << endl;
+      cout << "Ingrese el numero x el que va a poder cambiar en la fase "
+              "final: ";
+      cin << numeroCambiasso;
+      bendicionHormigaJ2 = true;
+    }
+  }
+
+  cout << "---------- FASE FINAL ------------" << endl;
+  cout << "JUGADOR 1" << setw(20) << "JUGADOR 2" << endl;
+  cout << "ESTATUILLAS: " << setw(21) << "ESTATUILLAS: " << endl;
+  for (int i = 0; i <= 4; i++) {
+    cout << *estatuillasJ1[i] << setw(30) << *estatuillasJ2[i] << endl;
+  }
+
+  cout << "---------- TIRADA DE DADOS ------------" << endl;
+
+  while (escaleraEncontrada == false) {
+    if (turnoJugador1) {
+      cout << "Turno de " << jugador1 << endl;
+
+      lanzarCincoDados6Caras(dados);
+
+      for (int i = 0; i < 5; i++) {
+        cout << dados[i] << " " << endl;
+      };
+
+      for (int i = 0; i < 4; i++) {
+        if (*estatuillasJ1[i] == "Cangrejo" && beneficioCangrejo) {
+          // Podrá lanzar los dados dos veces en el primer tiro de la fase
+          // final.
+          cout << "Tenes la estatuilla de Cangrejo, podes tirar los dados "
+                  "otra vez mas si queres en el primer tiro de la fase final."
+               << endl;
+          cout << "¿Queres tirar los dados otra vez? (1 = si, 0 = no)" << endl;
+          cin >> opcion;
+          if (opcion == 1) {
+            lanzarCincoDados6Caras(dados);
+            for (int i = 0; i < 5; i++) {
+              cout << dados[i] << " " << endl;
+            };
+            beneficioCangrejo = false;
+          } else if (opcion == 0) {
+            beneficioCangrejo = false;
+          }
+        } else if (*estatuillasJ1[i] == "Medusa" &&
+                   (dados[0] && dados[1] == dados[0] && dados[2] == dados[0] &&
+                    dados[3] == dados[0] && dados[4] == dados[0] &&
+                    dados[5] == dados[0])) {
+          // GANA PUNTOS DE VICTORIA
+        }
+      }
+
+    } else {
+      cout << "Turno de " << jugador2 << endl;
+
+      lanzarCincoDados6Caras(dados);
+
+      for (int i = 0; i < 5; i++) {
+        cout << dados[i] << " " << endl;
+      };
+
+      for (int i = 0; i < 4; i++) {
+        if (*estatuillasJ2[i] == "Cangrejo" && beneficioCangrejo) {
+          // Podrá lanzar los dados dos veces en el primer tiro de la fase
+          // final.
+          cout << "Tenes la estatuilla de Cangrejo, podes tirar los dados "
+                  "otra vez mas si queres en el primer tiro de la fase final."
+               << endl;
+          cout << "¿Queres tirar los dados otra vez? (1 = si, 0 = no)" << endl;
+          cin >> opcion;
+          if (opcion == 1) {
+            lanzarCincoDados6Caras(dados);
+            for (int i = 0; i < 5; i++) {
+              cout << dados[i] << " " << endl;
+            };
+            beneficioCangrejo = false;
+          } else if (opcion == 0) {
+            beneficioCangrejo = false;
+          }
+        } else if (*estatuillasJ2[i] == "Cangrejo" && beneficioCangrejo) {
+          // Podrá lanzar los dados dos veces en el primer tiro de la fase
+          // final.
+          cout << "Tenes la estatuilla de Cangrejo, podes tirar los dados "
+                  "otra vez mas si queres en el primer tiro de la fase final."
+               << endl;
+          cout << "¿Queres tirar los dados otra vez? (1 = si, 0 = no)" << endl;
+          cin >> opcion;
+          if (opcion == 1) {
+            lanzarCincoDados6Caras(dados);
+            for (int i = 0; i < 5; i++) {
+              cout << dados[i] << " " << endl;
+            };
+            beneficioCangrejo = false;
+          } else if (opcion == 0) {
+            beneficioCangrejo = false;
+          }
+        }
+      }
+    }
+  }
+}
+
 void startGame() {
   int NUM_ESTATUILLAS = 5, contadorEstatuillasObtenidas = 0,
       restarPuntosVictoriaJ1 = 0, restarPuntosVictoriaJ2 = 0,
       contadorMaldicionMedusa = 0, contadorMaldicionAguila = 0;
   string jugador1, jugador2;
-  string jugador1Estatuillas[5] = {}, jugador2Estatuillas[5] = {};
+  string *jugador1Estatuillas[5] = {}, *jugador2Estatuillas[5] = {};
   int opcion, dadosFaseFinal[5] = {}, dadosExpedicion[2] = {},
               dadoOrdenJugadores[2] = {}, puntosMaldicionCangrejo = 0,
               puntosMaldicionHormiga[3] = {}, tresDados[3] = {};
@@ -87,7 +229,13 @@ void startGame() {
   bool turnoJugador1 = false, maldicionMedusaJ1 = false,
        maldicionMedusaJ2 = false, maldicionAguila = false,
        maldicionAguilaJ1 = false, maldicionAguilaJ2 = false,
-       maldicionSalamandraJ1 = false, maldicionSalamandraJ2 = false;
+       maldicionSalamandraJ1 = false, maldicionSalamandraJ2 = false,
+       primeraVez = false;
+
+  for (int i = 0; i < NUM_ESTATUILLAS; i++) {
+    jugador1Estatuillas[i] = new string("");
+    jugador2Estatuillas[i] = new string("");
+  }
 
   cout << "Ingrese el nombre del jugador numero 1: ";
   cin >> jugador1;
@@ -134,47 +282,74 @@ void startGame() {
     cout << "ESTATUILLAS: " << setw(21) << "ESTATUILLAS: " << endl;
 
     for (int i = 0; i <= 4; i++) {
-      if (jugador1Estatuillas[i] != "") {
-        cout << jugador1Estatuillas[i] << endl;
+      if (*jugador1Estatuillas[i] != "") {
+        cout << *jugador1Estatuillas[i] << endl;
       }
     }
 
     for (int i = 0; i <= 4; i++) {
-      if (jugador2Estatuillas[i] != "") {
-        cout << setw(30) << jugador2Estatuillas[i] << endl;
+      if (*jugador2Estatuillas[i] != "") {
+        cout << setw(30) << *jugador2Estatuillas[i] << endl;
       }
     }
 
     cout << "\n\n ---------------------- \n\n" << endl;
-    cout << "CONTADOR MALDICION AGUILA =========> " << contadorMaldicionAguila
-         << endl;
-
-    if (maldicionMedusaJ1 || maldicionMedusaJ2) {
-      contadorMaldicionMedusa++;
-    }
 
     if ((maldicionMedusaJ1 || maldicionMedusaJ2) &&
         contadorMaldicionMedusa == 3) {
       maldicionMedusaJ1 = false;
       maldicionMedusaJ2 = false;
     }
+    if (maldicionMedusaJ1) {
+      turnoJugador1 = false;
+    } else if (maldicionMedusaJ2) {
+      turnoJugador1 = true;
+    }
 
-    if (maldicionAguila && contadorMaldicionAguila < 2) {
+    if (maldicionMedusaJ1 || maldicionMedusaJ2) {
+      contadorMaldicionAguila = 0;
+      contadorMaldicionMedusa++;
+    }
+
+    if ((!maldicionMedusaJ1 && !maldicionMedusaJ2) && maldicionAguila &&
+        !primeraVez && contadorMaldicionAguila < 2) {
       contadorMaldicionAguila++;
     } else if (maldicionAguila && contadorMaldicionAguila == 2) {
       contadorMaldicionAguila = 0;
     }
 
-    if (maldicionAguilaJ1 && contadorMaldicionAguila == 0) {
+    if (maldicionAguilaJ1 && primeraVez && contadorMaldicionAguila == 0) {
+      turnoJugador1 = false;
+      primeraVez = false;
+      contadorMaldicionAguila++;
+    } else if (maldicionAguilaJ1 && !primeraVez &&
+               contadorMaldicionAguila == 0) {
       turnoJugador1 = true;
-    } else if (maldicionAguilaJ2 && contadorMaldicionAguila == 0) {
+    } else if (maldicionAguilaJ1 && !primeraVez &&
+               contadorMaldicionAguila != 0) {
       turnoJugador1 = false;
     }
 
+    if (maldicionAguilaJ2 && primeraVez && contadorMaldicionAguila == 0) {
+      turnoJugador1 = true;
+      primeraVez = false;
+      contadorMaldicionAguila++;
+    } else if (maldicionAguilaJ2 && !primeraVez &&
+               contadorMaldicionAguila == 0) {
+      turnoJugador1 = false;
+    } else if (maldicionAguilaJ2 && !primeraVez &&
+               contadorMaldicionAguila != 0) {
+      turnoJugador1 = true;
+    }
+
+    cout << "CONTADOR MALDICION AGUILA " << contadorMaldicionAguila << endl;
+    cout << "CONTADOR ESTATUILLAS OBTENIDAS " << contadorEstatuillasObtenidas
+         << endl;
+
     // ORDEN TURNOS
-    if (turnoJugador1 && !maldicionMedusaJ1) {
+    if (turnoJugador1) {
       cout << "---> TURNO DE: " << jugador1 << endl;
-    } else if (!maldicionMedusaJ2) {
+    } else {
       cout << "---> TURNO DE: " << jugador2 << endl;
     }
 
@@ -200,8 +375,8 @@ void startGame() {
             if ((tresDados[0] < 5 && tresDados[1] < 5) ||
                 (tresDados[1] < 5 && tresDados[2] < 5) ||
                 (tresDados[0] < 5 && tresDados[2] < 5)) {
+              jugador2Estatuillas[0] = new string("Hormiga");
               cout << "Ganaste la estatuilla de Hormiga" << endl;
-              jugador2Estatuillas[0] = "Hormiga";
               cout << jugador1
                    << " tira tres dados de diez caras y el valor obtenido son "
                       "los puntos de victoria que le descuenta a "
@@ -223,8 +398,8 @@ void startGame() {
             if ((tresDados[0] < 5 && tresDados[1] < 5) ||
                 (tresDados[1] < 5 && tresDados[2] < 5) ||
                 (tresDados[0] < 5 && tresDados[2] < 5)) {
+              jugador1Estatuillas[0] = new string("Hormiga");
               cout << "Ganaste la estatuilla de Hormiga" << endl;
-              jugador1Estatuillas[0] = "Hormiga";
               cout << jugador2
                    << " tira tres dados de diez caras y el valor obtenido son "
                       "los puntos de victoria que le descuenta a "
@@ -250,7 +425,7 @@ void startGame() {
             if (dadosExpedicion[0] < 5 && dadosExpedicion[1] < 5) {
               cout << "Ganaste la estatuilla de Hormiga" << endl;
               if (turnoJugador1) {
-                jugador1Estatuillas[0] = "Hormiga";
+                jugador1Estatuillas[0] = new string("Hormiga");
                 cout << jugador2
                      << " tira dos dados de diez caras y el valor "
                         "obtenido "
@@ -265,7 +440,7 @@ void startGame() {
                 restarPuntosVictoriaJ1 +=
                     puntosMaldicionHormiga[0] + puntosMaldicionHormiga[1];
               } else {
-                jugador2Estatuillas[0] = "Hormiga";
+                jugador2Estatuillas[0] = new string("Hormiga");
                 cout << jugador1
                      << " tira dos dados de diez caras y el valor "
                         "obtenido "
@@ -308,7 +483,7 @@ void startGame() {
                 (dadosExpedicion[1] % 2 != 0 && dadosExpedicion[2] % 2 == 0) ||
                 (dadosExpedicion[1] % 2 == 0 && dadosExpedicion[2] % 2 != 0)) {
               cout << "Ganaste la estatuilla de Cangrejo" << endl;
-              jugador2Estatuillas[1] = "Cangrejo";
+              jugador2Estatuillas[1] = new string("Cangrejo");
               cout << jugador1
                    << " tira un dado de diez caras y el valor obtenido "
                       "son los puntos de victoria que le descuenta a "
@@ -330,7 +505,7 @@ void startGame() {
                 (dadosExpedicion[1] % 2 == 0 && dadosExpedicion[2] % 2 != 0)) {
               lanzarTresDados(dadosExpedicion);
               cout << "Ganaste la estatuilla de Cangrejo" << endl;
-              jugador1Estatuillas[1] = "Cangrejo";
+              jugador1Estatuillas[1] = new string("Cangrejo");
               cout << jugador2
                    << " tira un dado de diez caras y el valor obtenido "
                       "son los puntos de victoria que le descuenta a "
@@ -348,7 +523,7 @@ void startGame() {
                 (dadosExpedicion[0] % 2 == 0 && dadosExpedicion[1] % 2 != 0)) {
               lanzarDosDados(dadosExpedicion);
               if (turnoJugador1) {
-                jugador1Estatuillas[1] = "Cangrejo";
+                jugador1Estatuillas[1] = new string("Cangrejo");
                 cout << jugador2
                      << " tira un dado de diez caras y el valor obtenido "
                         "son los puntos de victoria que le descuenta a "
@@ -359,9 +534,8 @@ void startGame() {
                      << " puntos de victoria a " << jugador1 << endl;
                 restarPuntosVictoriaJ1 += puntosMaldicionCangrejo;
                 estatuillasDisponibles[1] = false;
-                contadorEstatuillasObtenidas++;
               } else {
-                jugador2Estatuillas[1] = "Cangrejo";
+                jugador2Estatuillas[1] = new string("Cangrejo");
                 cout << jugador1
                      << " tira un dado de diez caras y el valor obtenido "
                         "son los puntos de victoria que le descuenta a "
@@ -398,7 +572,7 @@ void startGame() {
                 (dadosExpedicion[1] + dadosExpedicion[2] == 7)) {
               lanzarTresDados(dadosExpedicion);
               cout << "Ganaste la estatuilla de Medusa" << endl;
-              jugador2Estatuillas[2] = "Medusa";
+              jugador2Estatuillas[2] = new string("Medusa");
               maldicionMedusaJ2 = true;
               estatuillasDisponibles[2] = false;
               contadorEstatuillasObtenidas++;
@@ -410,7 +584,7 @@ void startGame() {
                 (dadosExpedicion[1] + dadosExpedicion[2] == 7)) {
               lanzarTresDados(dadosExpedicion);
               cout << "Ganaste la estatuilla de Medusa" << endl;
-              jugador1Estatuillas[2] = "Medusa";
+              jugador1Estatuillas[2] = new string("Medusa");
               maldicionMedusaJ1 = true;
               estatuillasDisponibles[2] = false;
               contadorEstatuillasObtenidas++;
@@ -421,11 +595,11 @@ void startGame() {
               cout << "Ganaste la estatuilla de Medusa" << endl;
               if (turnoJugador1) {
                 // El jugador pierde turno x 3 rondas
-                jugador1Estatuillas[2] = "Medusa";
+                jugador1Estatuillas[2] = new string("Medusa");
                 maldicionMedusaJ1 = true;
               } else {
                 // El jugador pierde turno x 3 rondas
-                jugador2Estatuillas[2] = "Medusa";
+                jugador2Estatuillas[2] = new string("Medusa");
                 maldicionMedusaJ2 = true;
               }
               estatuillasDisponibles[2] = false;
@@ -455,11 +629,12 @@ void startGame() {
                 (dadosExpedicion[1] == 10 && dadosExpedicion[2] == 1) ||
                 (dadosExpedicion[2] == 10 && dadosExpedicion[1] == 1)) {
               cout << "Ganaste la estatuilla de Aguila" << endl;
-              jugador2Estatuillas[3] = "Aguila";
+              jugador2Estatuillas[3] = new string("Aguila");
               maldicionAguilaJ2 = true;
               estatuillasDisponibles[3] = false;
               contadorEstatuillasObtenidas++;
               maldicionAguila = true;
+              primeraVez = true;
             }
           } else if (turnoJugador1 && maldicionSalamandraJ2) {
             lanzarTresDados(dadosExpedicion);
@@ -470,11 +645,12 @@ void startGame() {
                 (dadosExpedicion[1] == 10 && dadosExpedicion[2] == 1) ||
                 (dadosExpedicion[2] == 10 && dadosExpedicion[1] == 1)) {
               cout << "Ganaste la estatuilla de Aguila" << endl;
-              jugador1Estatuillas[3] = "Aguila";
+              jugador1Estatuillas[3] = new string("Aguila");
               maldicionAguilaJ1 = true;
               estatuillasDisponibles[3] = false;
               contadorEstatuillasObtenidas++;
               maldicionAguila = true;
+              primeraVez = true;
             }
           } else {
             lanzarDosDados(dadosExpedicion);
@@ -482,14 +658,15 @@ void startGame() {
                 dadosExpedicion[1] == 10 && dadosExpedicion[0] == 1) {
               cout << "Ganaste la estatuilla de Aguila" << endl;
               if (turnoJugador1) {
-                jugador1Estatuillas[3] = "Aguila";
+                jugador1Estatuillas[3] = new string("Aguila");
                 maldicionAguilaJ1 = true;
               } else {
-                jugador2Estatuillas[3] = "Aguila";
+                jugador2Estatuillas[3] = new string("Aguila");
                 maldicionAguilaJ2 = true;
               }
               estatuillasDisponibles[3] = false;
               maldicionAguila = true;
+              primeraVez = true;
               contadorEstatuillasObtenidas++;
             }
           }
@@ -506,21 +683,15 @@ void startGame() {
           cout << "CONDICION DE OBTENCION: Los dados lanzados deben ser "
                   "consecutivos. Por ejemplo: (1 y 2) (2 y 3) (9 y 10)."
                << endl;
-          if (!turnoJugador1 && maldicionSalamandraJ1) {
-            lanzarTresDados(dadosExpedicion);
-          } else if (turnoJugador1 && maldicionSalamandraJ2) {
-            lanzarTresDados(dadosExpedicion);
-          } else {
-            lanzarDosDados(dadosExpedicion);
-          }
+          lanzarDosDados(dadosExpedicion);
           if (dadosExpedicion[0] &&
               dadosExpedicion[1] == dadosExpedicion[0] + 1) {
             cout << "Ganaste la estatuilla de Salamandra" << endl;
             if (turnoJugador1) {
-              jugador1Estatuillas[4] = "Salamandra";
+              jugador1Estatuillas[4] = new string("Salamandra");
               maldicionSalamandraJ1 = true;
             } else {
-              jugador2Estatuillas[4] = "Salamandra";
+              jugador2Estatuillas[4] = new string("Salamandra");
               maldicionSalamandraJ2 = true;
             }
             estatuillasDisponibles[4] = false;
@@ -538,9 +709,15 @@ void startGame() {
         break;
     }
 
+    system("cls");
     cout << "DADO 1: " << dadosExpedicion[0] << endl;
     cout << "DADO 2: " << dadosExpedicion[1] << endl;
   }
+
+  cout << "LA FASE DE EXPEDICION HA TERMINADO!" << endl;
+
+  faseFinal(jugador1Estatuillas, jugador2Estatuillas, restarPuntosVictoriaJ1,
+            restarPuntosVictoriaJ2, jugador1, jugador2, turnoJugador1);
 }
 
 void showStatistics() {
@@ -588,6 +765,5 @@ void seleccionarOpcion() {
 }
 
 int main() {
-  string steve[5], irwin[5];
   seleccionarOpcion();
 };
