@@ -28,33 +28,6 @@ bool validarEscaleraDeCuatro(int dados[5]) {
   return false;
 }
 
-// bool verificarEscalera(int dados[5]) {
-//   bool estanPresentes[6] = {false};
-//   // [2, 5, 3, 6, 4]
-//   for (int i = 0; i < 5; i++) {
-//     int valor = dados[i];
-
-//     if (estanPresentes[valor - 1]) {
-//       return false;
-//     }
-
-//     estanPresentes[valor - 1] = true;
-//   }
-
-//   int contador = 0;
-//   for (int i = 0; i < 6; i++) {
-//     if (estanPresentes[i]) {
-//       contador++;
-//       cout << contador;
-//       if (contador == 5) {
-//         return true;  // Hay 5 valores consecutivos, es una escalera
-//       }
-//     } else {
-//       contador = 0;
-//     }
-//   }
-// }
-
 int main() {
   int dados[5] = {3, 1, 4, 5, 2};
   bool esEscalera = validarEscaleraDeCuatro(dados);

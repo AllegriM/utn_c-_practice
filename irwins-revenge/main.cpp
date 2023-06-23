@@ -26,6 +26,7 @@ using namespace std;
 
 int puntosVictoriaJ1 = 0, puntosVictoriaJ2 = 0, restarPuntosVictoriaJ1 = 0,
     restarPuntosVictoriaJ2 = 0;
+string jugador1, jugador2;
 
 void exit() {
   cout << "Saliendo del juego";
@@ -143,8 +144,6 @@ void faseFinal(string** estatuillasJ1,
                string** estatuillasJ2,
                int restarPuntosVictoriaJ1,
                int restarPuntosVictoriaJ2,
-               string jugador1,
-               string jugador2,
                bool turnoJugador1) {
   int opcion, numeroCambiasso, numeroEliminado, numeroNuevo, numeroHormiga,
       opcionHormiga;
@@ -506,7 +505,6 @@ void faseFinal(string** estatuillasJ1,
 void startGame() {
   int NUM_ESTATUILLAS = 5, contadorEstatuillasObtenidas = 0,
       contadorMaldicionMedusa = 0, contadorMaldicionAguila = 0;
-  string jugador1, jugador2;
   string *jugador1Estatuillas[5] = {}, *jugador2Estatuillas[5] = {};
   int opcion, dadosFaseFinal[5] = {}, dadosExpedicion[2] = {},
               dadoOrdenJugadores[2] = {}, puntosMaldicionCangrejo = 0,
@@ -697,9 +695,22 @@ void startGame() {
               if (primerIntentoHormigaJ2) {
                 puntosVictoriaJ2 += 10;
                 puntosVictoriaJ1 -= 3;
+                cout << jugador2 << " obtiene 10 puntos de victoria" << endl;
+                cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
+
               } else {
                 puntosVictoriaJ2 += 5;
                 puntosVictoriaJ1 -= 3;
+                cout << jugador2 << " obtiene 5 puntos de victoria" << endl;
+                cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
               }
             }
           } else if (turnoJugador1 && maldicionSalamandraJ2) {
@@ -734,9 +745,21 @@ void startGame() {
               if (primerIntentoHormigaJ1) {
                 puntosVictoriaJ1 += 10;
                 puntosVictoriaJ2 -= 3;
+                cout << jugador1 << " obtiene 10 puntos de victoria" << endl;
+                cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
               } else {
                 puntosVictoriaJ1 += 5;
                 puntosVictoriaJ2 -= 3;
+                cout << jugador1 << " obtiene 5 puntos de victoria" << endl;
+                cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
               }
             }
           } else {
@@ -767,10 +790,22 @@ void startGame() {
                 if (primerIntentoHormigaJ1) {
                   puntosVictoriaJ1 += 10;
                   puntosVictoriaJ2 -= 3;
+                  cout << jugador1 << " obtiene 10 puntos de victoria" << endl;
+                  cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
 
                 } else {
                   puntosVictoriaJ1 += 5;
                   puntosVictoriaJ2 -= 3;
+                  cout << jugador1 << " obtiene 5 puntos de victoria" << endl;
+                  cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
                 }
               } else {
                 jugador2Estatuillas[0] = new string("Hormiga");
@@ -789,9 +824,21 @@ void startGame() {
                 if (primerIntentoHormigaJ2) {
                   puntosVictoriaJ2 += 10;
                   puntosVictoriaJ1 -= 3;
+                  cout << jugador2 << " obtiene 10 puntos de victoria" << endl;
+                  cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
                 } else {
                   puntosVictoriaJ2 += 5;
                   puntosVictoriaJ1 -= 3;
+                  cout << jugador2 << " obtiene 5 puntos de victoria" << endl;
+                  cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
                 }
               }
               estatuillasDisponibles[0] = false;
@@ -847,10 +894,21 @@ void startGame() {
               if (primerIntentoCangrejoJ2) {
                 puntosVictoriaJ2 += 10;
                 puntosVictoriaJ1 -= 3;
-
+                cout << jugador2 << " obtiene 10 puntos de victoria" << endl;
+                cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
               } else {
                 puntosVictoriaJ2 += 5;
                 puntosVictoriaJ1 -= 3;
+                cout << jugador2 << " obtiene 5 puntos de victoria" << endl;
+                cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
               }
             }
           } else if (turnoJugador1 && maldicionSalamandraJ2) {
@@ -884,9 +942,21 @@ void startGame() {
               if (primerIntentoCangrejoJ1) {
                 puntosVictoriaJ1 += 10;
                 puntosVictoriaJ2 -= 3;
+                cout << jugador1 << " obtiene 10 puntos de victoria" << endl;
+                cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
               } else {
                 puntosVictoriaJ1 += 5;
                 puntosVictoriaJ2 -= 3;
+                cout << jugador1 << " obtiene 5 puntos de victoria" << endl;
+                cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
               }
             }
           } else {
@@ -913,10 +983,21 @@ void startGame() {
                 if (primerIntentoCangrejoJ1) {
                   puntosVictoriaJ1 += 10;
                   puntosVictoriaJ2 -= 3;
-
+                  cout << jugador1 << " obtiene 10 puntos de victoria" << endl;
+                  cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
                 } else {
                   puntosVictoriaJ1 += 5;
                   puntosVictoriaJ2 -= 3;
+                  cout << jugador1 << " obtiene 5 puntos de victoria" << endl;
+                  cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
                 }
               } else {
                 jugador2Estatuillas[1] = new string("Cangrejo");
@@ -932,10 +1013,21 @@ void startGame() {
                 if (primerIntentoCangrejoJ2) {
                   puntosVictoriaJ2 += 10;
                   puntosVictoriaJ1 -= 3;
-
+                  cout << jugador2 << " obtiene 10 puntos de victoria" << endl;
+                  cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
                 } else {
                   puntosVictoriaJ2 += 5;
                   puntosVictoriaJ1 -= 3;
+                  cout << jugador2 << " obtiene 5 puntos de victoria" << endl;
+                  cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
                 }
               }
               estatuillasDisponibles[1] = false;
@@ -978,10 +1070,21 @@ void startGame() {
               if (primerIntentoMedusaJ2) {
                 puntosVictoriaJ2 += 10;
                 puntosVictoriaJ1 -= 3;
-
+                cout << jugador2 << " obtiene 10 puntos de victoria" << endl;
+                cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
               } else {
                 puntosVictoriaJ2 += 5;
                 puntosVictoriaJ1 -= 3;
+                cout << jugador2 << " obtiene 5 puntos de victoria" << endl;
+                cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
               }
             }
           } else if (turnoJugador1 && maldicionSalamandraJ2) {
@@ -1004,10 +1107,21 @@ void startGame() {
               if (primerIntentoMedusaJ1) {
                 puntosVictoriaJ1 += 10;
                 puntosVictoriaJ2 -= 3;
-
+                cout << jugador1 << " obtiene 10 puntos de victoria" << endl;
+                cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
               } else {
                 puntosVictoriaJ1 += 5;
                 puntosVictoriaJ2 -= 3;
+                cout << jugador1 << " obtiene 5 puntos de victoria" << endl;
+                cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
               }
             }
           } else {
@@ -1027,10 +1141,21 @@ void startGame() {
                 if (primerIntentoMedusaJ1) {
                   puntosVictoriaJ1 += 10;
                   puntosVictoriaJ2 -= 3;
-
+                  cout << jugador1 << " obtiene 10 puntos de victoria" << endl;
+                  cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
                 } else {
                   puntosVictoriaJ1 += 5;
                   puntosVictoriaJ2 -= 3;
+                  cout << jugador1 << " obtiene 5 puntos de victoria" << endl;
+                  cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
                 }
               } else {
                 // El jugador pierde turno x 3 rondas
@@ -1039,10 +1164,21 @@ void startGame() {
                 if (primerIntentoMedusaJ2) {
                   puntosVictoriaJ2 += 10;
                   puntosVictoriaJ1 -= 3;
-
+                  cout << jugador2 << " obtiene 10 puntos de victoria" << endl;
+                  cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
                 } else {
                   puntosVictoriaJ2 += 5;
                   puntosVictoriaJ1 -= 3;
+                  cout << jugador2 << " obtiene 5 puntos de victoria" << endl;
+                  cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
                 }
               }
               estatuillasDisponibles[2] = false;
@@ -1090,10 +1226,21 @@ void startGame() {
               if (primerIntentoAguilaJ2) {
                 puntosVictoriaJ2 += 10;
                 puntosVictoriaJ1 -= 3;
-
+                cout << jugador2 << " obtiene 10 puntos de victoria" << endl;
+                cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
               } else {
                 puntosVictoriaJ2 += 5;
                 puntosVictoriaJ1 -= 3;
+                cout << jugador2 << " obtiene 5 puntos de victoria" << endl;
+                cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
               }
             }
           } else if (turnoJugador1 && maldicionSalamandraJ2) {
@@ -1121,10 +1268,21 @@ void startGame() {
               if (primerIntentoAguilaJ1) {
                 puntosVictoriaJ1 += 10;
                 puntosVictoriaJ2 -= 3;
-
+                cout << jugador1 << " obtiene 10 puntos de victoria" << endl;
+                cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
               } else {
                 puntosVictoriaJ1 += 5;
                 puntosVictoriaJ2 -= 3;
+                cout << jugador1 << " obtiene 5 puntos de victoria" << endl;
+                cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
               }
             }
           } else {
@@ -1144,10 +1302,21 @@ void startGame() {
                 if (primerIntentoAguilaJ1) {
                   puntosVictoriaJ1 += 10;
                   puntosVictoriaJ2 -= 3;
-
+                  cout << jugador1 << " obtiene 10 puntos de victoria" << endl;
+                  cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
                 } else {
                   puntosVictoriaJ1 += 5;
                   puntosVictoriaJ2 -= 3;
+                  cout << jugador1 << " obtiene 5 puntos de victoria" << endl;
+                  cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
                 }
               } else {
                 jugador2Estatuillas[3] = new string("Aguila");
@@ -1155,10 +1324,21 @@ void startGame() {
                 if (primerIntentoAguilaJ2) {
                   puntosVictoriaJ2 += 10;
                   puntosVictoriaJ1 -= 3;
-
+                  cout << jugador2 << " obtiene 10 puntos de victoria" << endl;
+                  cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
                 } else {
                   puntosVictoriaJ2 += 5;
                   puntosVictoriaJ1 -= 3;
+                  cout << jugador2 << " obtiene 5 puntos de victoria" << endl;
+                  cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                  cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                       << endl;
+                  cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                       << endl;
                 }
               }
               estatuillasDisponibles[3] = false;
@@ -1198,10 +1378,21 @@ void startGame() {
               if (primerIntentoSalamandraJ1) {
                 puntosVictoriaJ1 += 10;
                 puntosVictoriaJ2 -= 3;
-
+                cout << jugador1 << " obtiene 10 puntos de victoria" << endl;
+                cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
               } else {
                 puntosVictoriaJ1 += 5;
                 puntosVictoriaJ2 -= 3;
+                cout << jugador1 << " obtiene 5 puntos de victoria" << endl;
+                cout << jugador2 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
               }
             } else {
               jugador2Estatuillas[4] = new string("Salamandra");
@@ -1209,10 +1400,21 @@ void startGame() {
               if (primerIntentoSalamandraJ2) {
                 puntosVictoriaJ2 += 10;
                 puntosVictoriaJ1 -= 3;
-
+                cout << jugador2 << " obtiene 10 puntos de victoria" << endl;
+                cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
               } else {
                 puntosVictoriaJ2 += 5;
                 puntosVictoriaJ1 -= 3;
+                cout << jugador2 << " obtiene 5 puntos de victoria" << endl;
+                cout << jugador1 << " pierde 3 puntos de victoria" << endl;
+                cout << "PUNTAJE " << jugador1 << ": " << puntosVictoriaJ1
+                     << endl;
+                cout << "PUNTAJE " << jugador2 << ": " << puntosVictoriaJ2
+                     << endl;
               }
             }
             estatuillasDisponibles[4] = false;
@@ -1236,18 +1438,36 @@ void startGame() {
   cout << "LA FASE DE EXPEDICION HA TERMINADO!" << endl;
 
   faseFinal(jugador1Estatuillas, jugador2Estatuillas, restarPuntosVictoriaJ1,
-            restarPuntosVictoriaJ2, jugador1, jugador2, turnoJugador1);
+            restarPuntosVictoriaJ2, turnoJugador1);
 }
 
 void showStatistics() {
-  cout << "Los puntos de victoria del JUGADOR 1"
-       << " son: " << puntosVictoriaJ1 << endl;
-  cout << "Los puntos de victoria del JUGADOR 2"
-       << " son: " << puntosVictoriaJ2 << endl;
+  system("cls");
+  if (puntosVictoriaJ1 > puntosVictoriaJ2) {
+    cout << "GANADOR: " << jugador1 << " con la suma de " << puntosVictoriaJ1
+         << " PUNTOS." << endl;
+  } else if (puntosVictoriaJ1 < puntosVictoriaJ2) {
+    cout << "GANADOR: " << jugador2 << " con la suma de " << puntosVictoriaJ2
+         << " PUNTOS." << endl;
+  } else {
+    cout << "Empate" << endl;
+  }
 };
 
 void showCredits() {
-  cout << "showCredits";
+  system("cls");
+  cout << "TRABAJO PRACTICO LABORATORIO DE COMPUTACION" << endl;
+  cout << "-------------------------------------------" << endl;
+  cout << "ALUMNO: MARCO ALLEGRI" << endl;
+  cout << "DESARROLLADO POR MARCO ALLEGRI" << endl;
+  cout << "NOMBRE GRUPO: EL LLANERO SOLITARIO" << endl;
+  cout << "DATOS DEL CREADOR DEL JUEGO: \n Edad: 23 \n Carrera: Tecnicatura "
+          "Univesitaria en Programacion \n Universidad: Universidad "
+          "Tecnologica Nacional \n Mail: allegrimarco99@gmail.com \n "
+          "Github: https://github.com/AllegriM \n Portfolio: "
+          "https://portfolio-allegrim.vercel.app/"
+       << endl;
+  cout << "-------------------------------------------" << endl;
 };
 
 void seleccionarOpcion() {
